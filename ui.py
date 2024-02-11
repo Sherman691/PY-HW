@@ -10,7 +10,7 @@ def interface():
           
     command = int(input('Ваш выбор: '))
 
-    while command <1 or command > 3:
+    while command != 1 and command != 2 and command != 3:
         command = int(input('Ошибка. Ваш выбор: '))
 
     if command == 1:

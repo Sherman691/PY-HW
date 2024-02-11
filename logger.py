@@ -68,15 +68,15 @@ def print_data():
                         "3 - Выход \n"))
     
     
-    while command < 1 or command > 3:
+    while command != 1 and command != 2 and command != 3:
         print("Ошибка ввода!\n")
         command = int(input("1 - Ввести новые данные \n"
                             "2 - Удалить данные \n"
-                            "3 - Выход \n"))        
+                            "3 - Выход \n"))      
     if command == 1:        
         input_data()
-    elif command ==2:
-        remove(int(input("Введите номер справочника: ")))
+    elif command == 2:
+        remove(input("Введите номер справочника: "))
     elif command == 3:
         return
     
