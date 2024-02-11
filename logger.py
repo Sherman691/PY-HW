@@ -23,6 +23,34 @@ def input_data():
             file.write(f'{name};{surname};{phone};{adress}\n\n')
 
 
+def remove(ref_numb):    
+    if ref_numb == 1:
+        with open('data_first_variant.csv', 'r') as file:
+            name_del = input("Введите имя, которое хотите удалить: ")+"\n"
+            lines = file.readlines()
+            name_del_index = lines.index(name_del)
+
+        del lines[name_del_index: name_del_index + 5]
+
+        with open('data_first_variant.csv', 'w') as file: 
+            for line in lines:
+                file.write(line)
+        print_data()
+
+
+    if ref_numb == 2:
+        with open('data_second_variant.csv', 'r') as file:
+            name_del = input("Введите имя, которое хотите удалить: ")
+            lines = file.readlines()
+            
+
+        with open('data_second_variant.csv', 'w') as file:
+            for line in lines:
+                if name_del not in line:
+                    file.write(line)
+        print_data()                
+
+
 def print_data():
     print('1 справочник:')
     with open('data_first_variant.csv', 'r', encoding='utf-8') as file:
@@ -34,17 +62,22 @@ def print_data():
         data = file.readlines()
         print(''.join(data))
 
-    print("Хотите ввести новые данные?")  
-    command = int(input("1 - Да \n"
-                        "2 - Нет \n"))
+      
+    command = int(input("1 - Ввести новые данные \n"
+                        "2 - Удалить данные \n"
+                        "3 - Выход \n"))
     
     
-    while command < 1 or command > 2:
-        print("Ошибка ввода!\n"
-              "Хотите ввести новые данные?\n")
-        command = int(input("1 - Да \n"
-                            "2 - Нет \n"))        
+    while command < 1 or command > 3:
+        print("Ошибка ввода!\n")
+        command = int(input("1 - Ввести новые данные \n"
+                            "2 - Удалить данные \n"
+                            "3 - Выход \n"))        
     if command == 1:        
         input_data()
-        
-        
+    elif command ==2:
+        remove(int(input("Введите номер справочника: ")))
+    elif command == 3:
+        return
+    
+
